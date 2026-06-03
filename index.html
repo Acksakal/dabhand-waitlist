@@ -14,7 +14,8 @@
         <div class="brand">DabHand</div>
         <h1 id="page-title">Join early access</h1>
         <p class="intro">
-          Join the early access list. We will use your details to contact you when DabHand is ready in your area.
+          Join the early access list. We will use your details to contact you
+          when DabHand is ready in your area.
         </p>
 
         <form id="waitlist-form" novalidate>
@@ -48,11 +49,21 @@
           <div class="grid">
             <label>
               ZIP code
-              <input name="zipCode" inputmode="numeric" autocomplete="postal-code" required />
+              <input
+                name="zipCode"
+                inputmode="numeric"
+                autocomplete="postal-code"
+                required
+              />
             </label>
             <label>
               Phone <span>optional</span>
-              <input name="phoneNumber" inputmode="tel" autocomplete="tel" />
+              <input
+                name="phoneNumber"
+                inputmode="tel"
+                autocomplete="tel"
+                placeholder="(213) 555-0123"
+              />
             </label>
           </div>
 
@@ -67,12 +78,17 @@
           </label>
 
           <p class="consent">
-            By joining, you agree that Dab Hand may contact you about launch updates and early
-            access.
+            By joining, you agree that Dab Hand may contact you about launch
+            updates and early access.
           </p>
 
           <button id="submit-button" type="submit">Join waitlist</button>
-          <p id="form-status" class="status" role="status" aria-live="polite"></p>
+          <p
+            id="form-status"
+            class="status"
+            role="status"
+            aria-live="polite"
+          ></p>
         </form>
       </section>
     </main>
