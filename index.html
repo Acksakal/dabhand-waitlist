@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DabHand Waitlist</title>
+    <meta name="description" content="Join Dab Hand early access waitlist." />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./main.js"></script>
+  </head>
+  <body>
+    <main class="page">
+      <section class="panel" aria-labelledby="page-title">
+        <div class="brand">DabHand</div>
+        <h1 id="page-title">Join early access</h1>
+        <p class="intro">
+          Join the early access list. We will use your details to contact you when DabHand is ready in your area.
+        </p>
+
+        <form id="waitlist-form" novalidate>
+          <label>
+            Account type
+            <select name="accountType" required>
+              <option value="">Choose one</option>
+              <option value="customer">Customer (homeowner)</option>
+              <option value="contractor">Contractor</option>
+              <option value="supplier">Supplier</option>
+              <option value="designer">Designer</option>
+            </select>
+          </label>
+
+          <div class="grid">
+            <label>
+              First name
+              <input name="firstName" autocomplete="given-name" required />
+            </label>
+            <label>
+              Last name
+              <input name="lastName" autocomplete="family-name" required />
+            </label>
+          </div>
+
+          <label>
+            Business name <span>optional</span>
+            <input name="businessName" autocomplete="organization" />
+          </label>
+
+          <div class="grid">
+            <label>
+              ZIP code
+              <input name="zipCode" inputmode="numeric" autocomplete="postal-code" required />
+            </label>
+            <label>
+              Phone <span>optional</span>
+              <input name="phoneNumber" inputmode="tel" autocomplete="tel" />
+            </label>
+          </div>
+
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+
+          <label class="honeypot" aria-hidden="true">
+            Company website
+            <input name="company_website" tabindex="-1" autocomplete="off" />
+          </label>
+
+          <p class="consent">
+            By joining, you agree that Dab Hand may contact you about launch updates and early
+            access.
+          </p>
+
+          <button id="submit-button" type="submit">Join waitlist</button>
+          <p id="form-status" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
