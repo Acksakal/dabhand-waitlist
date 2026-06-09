@@ -1,3 +1,24 @@
+:root {
+  color-scheme: light;
+  --brand-navy: #272367;
+  --brand-powerful: #171a3b;
+  --brand-lavender: #b0a0ff66;
+  --brand-light-state: #8067ff;
+  --brand-light-state-8: #8067ff14;
+  --primary-main: #493b87;
+  --primary-light: #6a5ba7;
+  --primary-gradient: linear-gradient(135deg, #372be3 0%, #612de1 100%);
+  --surface-bg: #f6f7fc;
+  --surface-paper: #ffffff;
+  --surface-panel: #f6f3ff;
+  --surface-input: #f7f5f5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --line: #d1d2d7;
+  --success: #4caf50;
+  --error: #ff4444;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -6,9 +27,9 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #17211b;
-  background: #f4f7f2;
+    "Open Sans", "Roboto", "Helvetica", "Arial", ui-sans-serif, system-ui, sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-bg);
   letter-spacing: 0;
 }
 
@@ -21,34 +42,41 @@ body {
 
 .panel {
   width: min(100%, 42rem);
+  display: grid;
+  gap: 1.5rem;
   padding: 2rem;
-  border: 1px solid #d7dfd5;
-  border-radius: 0.5rem;
-  background: #ffffff;
-  box-shadow: 0 1.25rem 3rem rgba(31, 47, 38, 0.12);
+  border: 1px solid var(--brand-lavender);
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, var(--surface-paper) 0%, var(--surface-panel) 100%);
+  box-shadow: 0 0.5rem 1.5rem rgba(48, 37, 90, 0.08);
 }
 
-.brand {
-  width: fit-content;
-  margin-bottom: 1rem;
-  padding: 0.375rem 0.625rem;
-  border: 1px solid #b7c8b8;
-  border-radius: 0.5rem;
-  color: #245b3d;
-  font-size: 0.875rem;
-  font-weight: 700;
+.panel-header {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.brand-logo {
+  display: block;
+  width: min(100%, 18rem);
+  height: auto;
 }
 
 h1 {
   margin: 0;
+  color: var(--brand-powerful);
   font-size: 2rem;
-  line-height: 1.15;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .intro {
-  margin: 0.75rem 0 1.5rem;
-  color: #5a685f;
-  line-height: 1.6;
+  max-width: 32rem;
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
 form {
@@ -65,13 +93,22 @@ form {
 label {
   display: grid;
   gap: 0.375rem;
-  color: #24332a;
-  font-size: 0.9rem;
+  color: var(--brand-powerful);
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
-label span {
-  color: #6b776f;
+.label-title {
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: baseline;
+  color: var(--brand-powerful);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.label-title span {
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -80,17 +117,23 @@ select {
   width: 100%;
   min-height: 2.75rem;
   padding: 0 0.75rem;
-  border: 1px solid #bdc9bd;
+  border: 1px solid var(--line);
   border-radius: 0.5rem;
-  color: #17211b;
-  background: #ffffff;
+  color: var(--brand-powerful);
+  background: var(--surface-paper);
   font: inherit;
+}
+
+input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.72;
 }
 
 input:focus,
 select:focus {
-  outline: 0.1875rem solid rgba(36, 91, 61, 0.18);
-  border-color: #245b3d;
+  border-color: var(--primary-main);
+  box-shadow: 0 0 0 0.125rem rgba(73, 59, 135, 0.2);
+  outline: 0;
 }
 
 .honeypot {
@@ -99,8 +142,8 @@ select:focus {
 }
 
 .consent {
-  margin: 0.25rem 0 0;
-  color: #5a685f;
+  margin: 0;
+  color: var(--text-secondary);
   font-size: 0.875rem;
   line-height: 1.5;
 }
@@ -108,12 +151,18 @@ select:focus {
 button {
   min-height: 2.875rem;
   border: 0;
-  border-radius: 0.5rem;
-  color: #ffffff;
-  background: #245b3d;
+  border-radius: 1.5625rem;
+  color: var(--surface-paper);
+  background: var(--primary-gradient);
+  box-shadow: none;
   font: inherit;
-  font-weight: 800;
+  font-weight: 700;
   cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  box-shadow: 0 0.125rem 0.25rem rgba(73, 59, 135, 0.2);
+  filter: brightness(0.98);
 }
 
 button:disabled {
@@ -124,15 +173,19 @@ button:disabled {
 .status {
   min-height: 1.5rem;
   margin: 0;
-  color: #245b3d;
+  color: var(--success);
   font-weight: 700;
 }
 
 .status.error {
-  color: #a13b2d;
+  color: var(--error);
 }
 
 @media (max-width: 40rem) {
+  .page {
+    padding: 1rem;
+  }
+
   .panel {
     padding: 1.25rem;
   }
