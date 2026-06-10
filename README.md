@@ -1,6 +1,6 @@
-# Dab Hand Waitlist
+# DabHand Waitlist
 
-Static GitHub Pages waitlist form for Dab Hand early access.
+Static GitHub Pages waitlist form for DabHand early access.
 
 Live URL:
 
