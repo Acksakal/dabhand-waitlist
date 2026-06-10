@@ -5,9 +5,18 @@ const form = document.querySelector("#waitlist-form");
 const statusEl = document.querySelector("#form-status");
 const submitButton = document.querySelector("#submit-button");
 const phoneInput = form.elements.phoneNumber;
-const alreadyJoinedDialog = document.querySelector("#already-joined-dialog");
-const alreadyJoinedDialogCloseButton = document.querySelector(
-  "#already-joined-dialog-close",
+const waitlistResultDialog = document.querySelector("#waitlist-result-dialog");
+const waitlistResultDialogKicker = document.querySelector(
+  "#waitlist-result-dialog-kicker",
+);
+const waitlistResultDialogTitle = document.querySelector(
+  "#waitlist-result-dialog-title",
+);
+const waitlistResultDialogMessage = document.querySelector(
+  "#waitlist-result-dialog-message",
+);
+const waitlistResultDialogCloseButton = document.querySelector(
+  "#waitlist-result-dialog-close",
 );
 
 function getNationalUsPhoneDigits(value) {
@@ -32,15 +41,18 @@ function setStatus(message, isError = false) {
   statusEl.classList.toggle("error", isError);
 }
 
-function showAlreadyJoinedDialog() {
+function showWaitlistResultDialog({ kicker, title, message }) {
   setStatus("");
+  waitlistResultDialogKicker.textContent = kicker;
+  waitlistResultDialogTitle.textContent = title;
+  waitlistResultDialogMessage.textContent = message;
 
-  if (typeof alreadyJoinedDialog.showModal !== "function") {
-    setStatus("You're already on the list.");
+  if (typeof waitlistResultDialog.showModal !== "function") {
+    setStatus(title);
     return;
   }
 
-  alreadyJoinedDialog.showModal();
+  waitlistResultDialog.showModal();
 }
 
 function getFormPayload(formData) {
@@ -80,13 +92,13 @@ phoneInput.addEventListener("input", (event) => {
   event.target.value = formatUsPhoneNumber(event.target.value);
 });
 
-alreadyJoinedDialogCloseButton.addEventListener("click", () => {
-  alreadyJoinedDialog.close();
+waitlistResultDialogCloseButton.addEventListener("click", () => {
+  waitlistResultDialog.close();
 });
 
-alreadyJoinedDialog.addEventListener("click", (event) => {
-  if (event.target === alreadyJoinedDialog) {
-    alreadyJoinedDialog.close();
+waitlistResultDialog.addEventListener("click", (event) => {
+  if (event.target === waitlistResultDialog) {
+    waitlistResultDialog.close();
   }
 });
 
@@ -102,12 +114,22 @@ form.addEventListener("submit", async (event) => {
     const data = await submitWaitlist(getFormPayload(new FormData(form)));
 
     if (data.alreadyJoined) {
-      showAlreadyJoinedDialog();
+      showWaitlistResultDialog({
+        kicker: "Already joined",
+        title: "You're already on the list.",
+        message:
+          "We have your details and will contact you when DabHand is ready in your area.",
+      });
       return;
     }
 
     form.reset();
-    setStatus("You're on the list.");
+    showWaitlistResultDialog({
+      kicker: "Success",
+      title: "You're on the list.",
+      message:
+        "Thanks for joining. We'll notify you as soon as DabHand is ready in your area.",
+    });
   } catch (error) {
     setStatus(
       error instanceof Error

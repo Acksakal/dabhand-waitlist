@@ -41,7 +41,7 @@
               <option value="customer">Customer (homeowner)</option>
               <option value="contractor">Contractor</option>
               <option value="supplier">Supplier</option>
-              <option value="designer">Designer/Architect</option>
+              <option value="designer">Designer / Architect</option>
             </select>
           </label>
 
@@ -108,19 +108,16 @@
       </section>
 
       <dialog
-        id="already-joined-dialog"
+        id="waitlist-result-dialog"
         class="waitlist-dialog"
-        aria-labelledby="already-joined-dialog-title"
-        aria-describedby="already-joined-dialog-message"
+        aria-labelledby="waitlist-result-dialog-title"
+        aria-describedby="waitlist-result-dialog-message"
       >
         <div class="dialog-panel">
-          <p class="dialog-kicker">Already joined</p>
-          <h2 id="already-joined-dialog-title">You're already on the list.</h2>
-          <p id="already-joined-dialog-message">
-            We have your details and will contact you when DabHand is ready in
-            your area.
-          </p>
-          <button id="already-joined-dialog-close" type="button">Close</button>
+          <p id="waitlist-result-dialog-kicker" class="dialog-kicker"></p>
+          <h2 id="waitlist-result-dialog-title"></h2>
+          <p id="waitlist-result-dialog-message"></p>
+          <button id="waitlist-result-dialog-close" type="button">Close</button>
         </div>
       </dialog>
     </main>
