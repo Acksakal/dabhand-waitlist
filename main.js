@@ -5,6 +5,10 @@ const form = document.querySelector("#waitlist-form");
 const statusEl = document.querySelector("#form-status");
 const submitButton = document.querySelector("#submit-button");
 const phoneInput = form.elements.phoneNumber;
+const alreadyJoinedDialog = document.querySelector("#already-joined-dialog");
+const alreadyJoinedDialogCloseButton = document.querySelector(
+  "#already-joined-dialog-close",
+);
 
 function getNationalUsPhoneDigits(value) {
   const digits = value.replace(/\D/g, "");
@@ -26,6 +30,17 @@ function formatUsPhoneNumber(value) {
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
   statusEl.classList.toggle("error", isError);
+}
+
+function showAlreadyJoinedDialog() {
+  setStatus("");
+
+  if (typeof alreadyJoinedDialog.showModal !== "function") {
+    setStatus("You're already on the list.");
+    return;
+  }
+
+  alreadyJoinedDialog.showModal();
 }
 
 function getFormPayload(formData) {
@@ -65,6 +80,16 @@ phoneInput.addEventListener("input", (event) => {
   event.target.value = formatUsPhoneNumber(event.target.value);
 });
 
+alreadyJoinedDialogCloseButton.addEventListener("click", () => {
+  alreadyJoinedDialog.close();
+});
+
+alreadyJoinedDialog.addEventListener("click", (event) => {
+  if (event.target === alreadyJoinedDialog) {
+    alreadyJoinedDialog.close();
+  }
+});
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -77,7 +102,7 @@ form.addEventListener("submit", async (event) => {
     const data = await submitWaitlist(getFormPayload(new FormData(form)));
 
     if (data.alreadyJoined) {
-      setStatus("You're already on the list.");
+      showAlreadyJoinedDialog();
       return;
     }
 

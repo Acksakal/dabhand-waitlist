@@ -13,10 +13,24 @@
       <section class="panel" aria-label="DabHand waitlist">
         <header class="panel-header">
           <img class="brand-logo" src="./logo-main.png" alt="DabHand" />
-          <p class="intro">
-            Join the early access list. We will use your details to contact you
-            when DabHand is ready in your area.
-          </p>
+          <div class="intro">
+            <p class="intro-title">&#128640; Get Early Access to DabHand</p>
+            <p>
+              DabHand is an AI-powered platform that makes construction and
+              remodeling projects effortless by connecting homeowners,
+              contractors, suppliers, designers, and architects in one place.
+              Be among the first to experience.
+            </p>
+            <p>
+              We're selecting only 20 early users from each category to gain
+              exclusive early access and help shape the platform.
+            </p>
+            <p>
+              Sign up for the waitlist today, and we'll notify you as soon as
+              DabHand is ready. Be among the first to shape the future of
+              construction.
+            </p>
+          </div>
         </header>
 
         <form id="waitlist-form" novalidate>
@@ -92,6 +106,23 @@
           ></p>
         </form>
       </section>
+
+      <dialog
+        id="already-joined-dialog"
+        class="waitlist-dialog"
+        aria-labelledby="already-joined-dialog-title"
+        aria-describedby="already-joined-dialog-message"
+      >
+        <div class="dialog-panel">
+          <p class="dialog-kicker">Already joined</p>
+          <h2 id="already-joined-dialog-title">You're already on the list.</h2>
+          <p id="already-joined-dialog-message">
+            We have your details and will contact you when DabHand is ready in
+            your area.
+          </p>
+          <button id="already-joined-dialog-close" type="button">Close</button>
+        </div>
+      </dialog>
     </main>
   </body>
 </html>

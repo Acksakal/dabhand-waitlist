@@ -73,10 +73,29 @@ h1 {
 }
 
 .intro {
-  max-width: 32rem;
-  margin: 0;
+  width: 100%;
+  max-width: none;
+  display: grid;
+  gap: 0.75rem;
   color: var(--text-secondary);
   line-height: 1.5;
+}
+
+.intro p {
+  margin: 0;
+}
+
+.intro p:not(.intro-title) {
+  text-indent: 1rem;
+  text-align: justify;
+  text-align-last: left;
+}
+
+.intro-title {
+  color: var(--brand-powerful);
+  font-weight: 700;
+  text-align: center;
+  text-align-last: center;
 }
 
 form {
@@ -179,6 +198,54 @@ button:disabled {
 
 .status.error {
   color: var(--error);
+}
+
+.waitlist-dialog {
+  width: min(calc(100% - 2rem), 26rem);
+  padding: 0;
+  border: 0;
+  border-radius: 0.75rem;
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.waitlist-dialog::backdrop {
+  background: rgba(23, 26, 59, 0.45);
+}
+
+.dialog-panel {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--brand-lavender);
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, var(--surface-paper) 0%, var(--surface-panel) 100%);
+  box-shadow: 0 1rem 2rem rgba(48, 37, 90, 0.18);
+}
+
+.dialog-kicker {
+  margin: 0;
+  color: var(--primary-main);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.dialog-panel h2 {
+  margin: 0;
+  color: var(--brand-powerful);
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.dialog-panel p {
+  margin: 0;
+}
+
+.dialog-panel p:not(.dialog-kicker) {
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
 @media (max-width: 40rem) {
